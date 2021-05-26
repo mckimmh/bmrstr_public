@@ -126,17 +126,9 @@ for (tour in 0:20){
 
 # Trace plots
 for (i in 1:2){
-  plot(ts, x[,i], type='n', xlab='t', ylab=paste0('X',i))
-  for (tour in 0:(ntours-1)){
-    lines(ts[tours==tour], x[tours==tour,i])
-  }
-}
-
-# Trace plots: zoomed in
-for (i in 1:2){
-  plot(ts, x[,i], type='n', xlab='t', ylab=paste0('X',i),
-       xlim=c(0,5))
-  for (tour in 0:(ntours-1)){
+  plot(ts[tours <= ntours], x[tours <= ntours,i], type='n', xlab='t',
+       ylab=paste0('X',i))
+  for (tour in 0:ntours){
     lines(ts[tours==tour], x[tours==tour,i])
   }
 }
