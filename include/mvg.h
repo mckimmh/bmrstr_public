@@ -6,13 +6,13 @@
 #include <armadillo>
 #include <random>
 
-/* Normalised log-density of a zero-mean multivariate Gaussian
+/* Log-density of an isotropic multivariate Gaussian distribution
  *
- * state     : State at which to evaluate the density
- * precision : Precision matrix
+ * state      : State at which to evaluate the density
+ * data       : matrix needed for compatability
  */
-double mvg_ld_normed(const arma::vec &state,
-                     const arma::mat &precision);
+double ld_mvg_iso(const arma::vec &state,
+                  const arma::mat &data);
 
 /* Simulate from an isotropic multivariate Gaussian
  *

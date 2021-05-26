@@ -3,7 +3,7 @@
  * Simulate from a bivariate Gaussian distribution with covariance matrix
  *      1.2, 0.4
  *      0.4, 0.8
- * using a Gaussian regeneration distribution with identity covariance matrix.
+ * using an isotropic Gaussian regeneration distribution.
  * Prints a short, detailed path to "bmrstr_mvg_x1.txt", "bmrstr_mvg_ts1.txt",
  * "bmrstr_mvg_tours1.txt" and a long path to "bmrstr_mvg_x2.txt".
  */
@@ -46,8 +46,8 @@ int main()
     LogPost gauss(d, targ_prec, ldtarg, grad_ldtarg, lap_ldtarg);
     
     // Regeneration distribution has identity covariance matrix
-    arma::mat regen_prec(2, 2, arma::fill::eye);
-    RegenDist mu(d, regen_prec, mvg_ld_normed, rmvg_iso);
+    arma::mat redundant_mat(d, d, arma::fill::eye);
+    RegenDist mu(d, redundant_mat, ld_mvg_iso, rmvg_iso);
     
     double logC = LOGC;
     double kappa_bar = KAPPA_BAR;
